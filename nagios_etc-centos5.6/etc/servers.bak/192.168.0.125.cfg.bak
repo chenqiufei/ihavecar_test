@@ -1,0 +1,115 @@
+# Define a host for the local machine
+define host{
+        use                     linux-server		; Name of host template to use
+        host_name               FS-192.168.0.125
+        alias                   FS-192.168.0.125
+        address                 121.9.243.125
+        }
+
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Shm Partition
+        check_command                   check_nrpe!check_shm
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Memory Usage
+	check_command			check_nrpe!check_memory
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             SSH
+	check_command			check_ssh2!22612
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Network-flow
+        check_command                   check_nrpe!check_network_flow
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             CPU-status
+        check_command                   check_nrpe!check_cpu
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             SYS-connections
+        check_command                   check_nrpe!check_sys_con
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             Memcached-11111-connections
+        check_command                   check_nrpe!check_11111_con
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             tool.youboy.com-bak
+        check_command                   check_nrpe!check_http_tool
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.125
+        service_description             www.yihubaiying.com-bak
+        check_command                   check_nrpe!check_http_job
+        }
+
+

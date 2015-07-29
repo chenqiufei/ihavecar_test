@@ -1,0 +1,54 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               FS-192.168.0.133
+        alias                   FS-192.168.0.133
+        address                    121.9.243.115
+	notifications_enabled		1
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       FS-192.168.0.133
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+
+################################# Host Monitor ###############################################
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       FS-192.168.0.133
+        service_description             Root Partition
+	check_command			check_nrpe!check_root_133
+        }
+
+define service{
+        use                             yuming-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.133
+        service_description             Current Load
+	check_command			check_nrpe!check_load_133
+        }
+
+
+################################ Server Monitor ###############################################
+define service{
+        use                             yuming-service
+        host_name                       FS-192.168.0.133
+        service_description             muying-8185
+        check_command                   check_nrpe!check_muying_133
+        }
+
+define service{
+        use                             yuming-service
+        host_name                       FS-192.168.0.133
+        service_description             techan-8183
+        check_command                   check_nrpe!check_techan_133
+        }
+
+
+define service{
+        use                             yuming-service
+        host_name                       FS-192.168.0.133
+        service_description             jiaju-8184
+        check_command                   check_nrpe!check_jiaju_133
+        }

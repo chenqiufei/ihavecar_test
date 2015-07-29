@@ -1,0 +1,14 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               qd-121.42.56.104
+        alias                   qd-121.42.56.104
+        address                   121.42.56.104
+	notifications_enabled           1
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       qd-121.42.56.104
+        service_description             PING
+	check_command			check_ping!400.0,40%!500.0,70%
+        }

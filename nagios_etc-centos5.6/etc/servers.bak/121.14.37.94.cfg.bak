@@ -1,0 +1,48 @@
+# Define a host for the local machine
+define host{
+        use                     linux-server            ; Name of host template to use
+							; This host definition will inherit all variables that are defined
+							; in (or inherited by) the linux-server host template definition.
+        host_name               121.14.37.94
+        alias                   121.14.37.94
+        address                 121.14.37.94
+        }
+# Define a service to "ping" the local machine
+
+define service{
+        use                             generic-service         ; Name of service template to use
+        host_name                       121.14.37.94
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+# Define a service to check SSH on the local machine.
+# Disable notifications for this service by default, as not all users may have SSH enabled.
+
+define service{
+        use                             generic-service         ; Name of service template to use
+        host_name                       121.14.37.94
+        service_description             SSH
+	check_command			check_ssh2!22612
+	notifications_enabled		0
+        }
+
+#define service{
+#         use                             dechao-service,srv-pnp      ; Name of service template to use
+#         host_name                       121.14.37.94
+#         service_description             www-8284
+#         check_command                   check_nrpe!check_http8284_www
+#         }
+#
+# define service{
+#         use                             dechao-service,srv-pnp         ; Name of service template to use
+#         host_name                       121.14.37.94
+#         service_description             sp.b2b-8187
+#         check_command                   check_nrpe!check_http8187_sp.b2b
+#         }
+#
+# define service{
+#         use                             dechao-service,srv-pnp         ; Name of service template to use
+#         host_name                       121.14.37.94
+#         service_description             b2b-8089
+#         check_command                   check_nrpe!check_http8089_b2b
+#         }

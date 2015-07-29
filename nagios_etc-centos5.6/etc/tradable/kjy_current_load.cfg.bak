@@ -1,0 +1,5 @@
+define servicegroup{
+        servicegroup_name kjy_Load
+        alias             KJY
+        members KJY-10.0.8.113,check_load,check_load,KJY-10.0.8.115,check_load,KJY-10.0.8.116,check_load,KJY-10.0.8.117,check_load
+       }

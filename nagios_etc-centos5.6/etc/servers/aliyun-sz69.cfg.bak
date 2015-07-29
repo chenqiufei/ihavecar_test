@@ -1,0 +1,298 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               sz-120.24.69.69
+        alias                   sz-120.24.69.69
+        address                 120.24.69.69
+	notifications_enabled           1
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             PING
+	check_command			check_ping!400.0,40%!500.0,70%
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             ping_59.39.7.23
+	check_command			check_nrpe!ping_59.39.7.23
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             ping_112.90.49.239
+	check_command			check_nrpe!ping_112.90.49.239
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             ping_59.39.7.26
+	check_command			check_nrpe!ping_59.39.7.26
+        }
+
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             ping_112.90.49.236
+	check_command			check_nrpe!ping_112.90.49.236
+        }
+
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             ping_112.90.49.243
+	check_command			check_nrpe!ping_112.90.49.243
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             112.90.49.243_port_443
+	check_command			check_nrpe!112.90.49.243_port_443
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             112.90.49.243_port_80
+        check_command                   check_nrpe!112.90.49.243_port_80
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             member.youboy.com
+	check_command			check_nrpe!member.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             producesystem.youboy.com
+	check_command			check_nrpe!producesystem.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             shopmanage.youboy.com
+	check_command			check_nrpe!shopmanage.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             purchase.youboy.com
+	check_command			check_nrpe!purchase.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             visitservice.youboy.com
+	check_command			check_nrpe!visitservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             keywordservice.youboy.com
+	check_command			check_nrpe!keywordservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             photoservice.youboy.com
+	check_command			check_nrpe!photoservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             purchaseservice.youboy.com
+	check_command			check_nrpe!purchaseservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             shopmanageservice.youboy.com
+	check_command			check_nrpe!shopmanageservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             memberservice.youboy.com
+	check_command			check_nrpe!memberservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             producesystemservice.youboy.com
+	check_command			check_nrpe!producesystemservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             shop.youboy.com
+	check_command			check_nrpe!shop.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             searchweb.youboy.com
+	check_command			check_nrpe!searchweb.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             order.youboy.com
+	check_command			check_nrpe!order.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             payment.youboy.com
+	check_command			check_nrpe!payment.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             signin.youboy.com
+	check_command			check_nrpe!signin.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             searchservice1.youboy.com
+	check_command			check_nrpe!searchservice1.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             orderservice.youboy.com
+	check_command			check_nrpe!orderservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             paymentservice.youboy.com
+	check_command			check_nrpe!paymentservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             searchservice.youboy.com
+	check_command			check_nrpe!searchservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             pur.youboy.com
+	check_command			check_nrpe!pur.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             crm.youboy.com
+	check_command			check_nrpe!crm.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             basesystemservice.youboy.com
+	check_command			check_nrpe!basesystemservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             crmservice.youboy.com
+	check_command			check_nrpe!crmservice.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             message.youboy.com
+	check_command			check_nrpe!message.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             active.youboy.com
+	check_command			check_nrpe!active.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             trade.youboy.com
+	check_command			check_nrpe!trade.youboy.com
+        }
+
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       sz-120.24.69.69
+        service_description             user.youboy.com
+	check_command			check_nrpe!user.youboy.com
+        }
+
+
+

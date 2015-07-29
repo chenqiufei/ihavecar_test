@@ -1,0 +1,30 @@
+define host{
+        use                     linux-server           
+        host_name               KJY-10.0.10.107
+        alias                   KJY-10.0.10.107
+        address                    10.0.10.107
+        notifications_enabled           1
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.10.107
+        service_description             trade-8686
+        check_command                   check_tcp!8686
+        }
+
+
+define service{
+        use                             dechao-service
+        host_name                       KJY-10.0.10.107
+        service_description             tuser-89
+        check_command                   check_tcp!89
+        }
+
+define service{
+        use                             dechao-service
+        host_name                       KJY-10.0.10.107
+        service_description             jobsmanager-8099
+        check_command                   check_tcp!8099
+        }
+

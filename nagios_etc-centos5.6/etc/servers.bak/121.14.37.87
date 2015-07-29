@@ -1,0 +1,200 @@
+# Define a host for the local machine
+
+define host{
+        use                     linux-server            ; Name of host template to use
+							; This host definition will inherit all variables that are defined
+							; in (or inherited by) the linux-server host template definition.
+        host_name               121.14.37.87
+        alias                   121.14.37.87
+        address                 121.14.37.87
+        notifications_enabled           1
+        }
+# HOST GROUP DEFINITION
+#
+###############################################################################
+###############################################################################
+
+# Define an optional hostgroup for Linux machines
+
+#define hostgroup{
+#        hostgroup_name  linux-servers ; The name of the hostgroup
+#        alias           Linux Servers ; Long name of the group
+#        members         localhost     ; Comma separated list of hosts that belong to this group
+#        }
+
+
+
+###############################################################################
+###############################################################################
+#
+# SERVICE DEFINITIONS
+#
+###############################################################################
+###############################################################################
+
+
+# Define a service to "ping" the local machine
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+
+# Define a service to check the disk space of the root partition
+# on the local machine.  Warning if < 20% free, critical if
+# < 10% free space on partition.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Shm Partition
+        check_command                   check_nrpe!check_shm
+        }
+
+
+# Define a service to check the number of currently logged in
+# users on the local machine.  Warning if > 20 users, critical
+# if > 50 users.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+
+# Define a service to check the number of currently running procs
+# on the local machine.  Warning if > 250 processes, critical if
+# > 400 users.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+
+
+# Define a service to check the load on the local machine. 
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+
+
+# Define a service to check the swap usage the local machine. 
+# Critical if less than 10% of swap is free, warning if less than 20% is free
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             Swap Usage
+	check_command			check_nrpe!check_swap
+        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.87
+#        service_description             mongodb_connect
+#        check_command                   check_mongodb!connect!27011!10!20
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.87
+#        service_description             mongodb_connections
+#        check_command                   check_mongodb!connections!27011!70!80
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.87
+#        service_description             mongodb_memory
+#        check_command                   check_mongodb!memory!27011!1.3!1.6
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.87
+#        service_description             mongodb_flush
+#        check_command                   check_mongodb!flushing!27011!40!50
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.87
+#        service_description             mongodb_lock
+#        check_command                   check_mongodb!lock!27011!5!10
+#        }
+
+
+# Define a service to check SSH on the local machine.
+# Disable notifications for this service by default, as not all users may have SSH enabled.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             SSH
+	check_command			check_ssh2!22612
+        }
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             nginx_3c
+        check_command                   check_nrpe!check_nginx_3c
+        }
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             nginx_beauty
+        check_command                   check_nrpe!check_nginx_beauty
+        }
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.87
+        service_description             nginx_clothing
+        check_command                   check_nrpe!check_nginx_clothing
+        }
+ define service{
+         use                             xiaolong-service         ; Name of service template to use
+         host_name                       121.14.37.87
+         service_description             nginx_techan
+         check_command                   check_nrpe!check_nginx_techan
+         }
+ define service{
+         use                             xiaolong-service         ; Name of service template to use
+         host_name                       121.14.37.87
+         service_description             nginx_muying
+         check_command                   check_nrpe!check_nginx_muying
+         }
+ define service{
+         use                             xiaolong-service         ; Name of service template to use
+         host_name                       121.14.37.87
+         service_description             nginx_jiaju
+         check_command                   check_nrpe!check_nginx_jiaju
+         }

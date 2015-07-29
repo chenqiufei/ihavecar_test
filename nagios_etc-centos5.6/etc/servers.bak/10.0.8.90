@@ -1,0 +1,113 @@
+# Define a host for the local machine
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               10.0.8.90
+        alias                   10.0.8.90
+        address                 10.0.8.90
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             Swap Usage
+	check_command			check_nrpe!check_swap
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             mongodb_connect_27016
+        check_command                   check_mongodb!connect!27016!10!20
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             mongodb_connections_27016
+        check_command                   check_mongodb!connections!27016!70!80
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             mongodb_memory_27016
+        check_command                   check_mongodb!memory!27016!6!8
+        }
+
+#define service{
+#        use                             yuming-service         ; Name of service template to use
+#        host_name                       10.0.8.90
+#        service_description             mongodb_connect_27050
+#        check_command                   check_mongodb!connect!27050!10!20
+#        }
+
+#define service{
+#        use                             yuming-service         ; Name of service template to use
+#        host_name                       10.0.8.90
+#        service_description             mongodb_connections_27050
+#        check_command                   check_mongodb!connections!27050!70!80
+#        }
+
+#define service{
+#        use                             yuming-service         ; Name of service template to use
+#        host_name                       10.0.8.90
+#        service_description             mongodb_memory_27050
+#        check_command                   check_mongodb!memory!27050!3!4
+#        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             SSH
+	check_command			check_ssh2!22612
+	notifications_enabled		0
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       10.0.8.90
+        service_description             CPU-status
+        check_command                   check_nrpe!check_cpu
+        }

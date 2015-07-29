@@ -1,0 +1,50 @@
+define host{
+        use                     microfot-server
+        host_name               MS-10.0.6.13
+        alias                   MS-10.0.6.13
+        address                    139.219.134.202
+        notifications_enabled           1
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             check_load_13
+        check_command                   check_nrpe!check_load_13
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             check_root_13
+        check_command                   check_nrpe!check_root_13
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             check_iowait_13
+        check_command                   check_nrpe!check_iowait_13
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             check_disk_rw_/_13
+        check_command                   check_nrpe!check_disk_rw_/_13
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             jiaju_8184_13
+        check_command                   check_nrpe!jiaju_8184_13
+        }
+
+define service{
+        use                             microsoft-service         
+        host_name                       MS-10.0.6.13
+        service_description             clothing_8182_13
+        check_command                   check_nrpe!clothing_8182_13
+        }
+

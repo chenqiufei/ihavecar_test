@@ -1,0 +1,30 @@
+define host{
+        use                     linux-server
+        host_name               SD-10.0.8.128
+        alias                   SD-10.0.8.128
+        address                    10.0.8.128
+        notifications_enabled           1
+        }
+
+define service{
+        use                          	dechao-service  
+        host_name                       SD-10.0.8.128
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        }
+
+
+
+################################# Host Monitor ###############################################
+
+
+
+
+
+################################ Server Monitor ####################################################
+define service{
+	use                             dechao-service
+        host_name                       SD-10.0.8.128
+        service_description             check_tcp_8089
+        check_command                    check_tcp_128_8089
+        }

@@ -1,0 +1,106 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               SD-10.0.8.152
+        alias                   SD-10.0.8.152
+        address                    10.0.8.152
+	notifications_enabled		1
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             Swap Usage
+	check_command			check_nrpe!check_swap
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             SSH
+	check_command			check_ssh2!22612
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             zombie_Processe
+        check_command                   check_nrpe!check_zombie_procs
+        }
+
+define service{
+        use                             dechao-service,srv-pnp
+        host_name                       SD-10.0.8.152
+        service_description             CPU-Status
+        check_command                   check_nrpe!check_cpu
+        }
+
+define service{
+        use                             dechao-service,srv-pnp        ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             TCP-Status
+        check_command                   check_nrpe!check_tcp_status
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             tuangou
+	check_command			check_nrpe!check_tuan_http
+        }
+
+define service{
+        use                             dechao-service         ; Name of service template to use
+        host_name                       SD-10.0.8.152
+        service_description             3c
+	check_command			check_nrpe!check_3c_http
+        }
+#define service{
+#        use                             dechao-service,srv-pnp         ; Name of service template to use
+#        host_name                       SD-10.0.8.152
+#        service_description             spccc-8187
+#	check_command			check_nrpe!check_tcp_8187
+#        }
+
+

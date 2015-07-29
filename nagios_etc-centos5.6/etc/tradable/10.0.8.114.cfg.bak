@@ -1,0 +1,56 @@
+define host{
+        use                     linux-server           
+        host_name               KJY-10.0.8.114
+        alias                   KJY-10.0.8.114
+        address                    10.0.8.114
+        notifications_enabled           1
+        }
+
+define service{
+        use                             dechao-service        
+        host_name                       KJY-10.0.8.114
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             check_load
+        check_command                   check_nrpe!check_load
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             check_root
+        check_command                   check_nrpe!check_root
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             check_iowait
+        check_command                   check_nrpe!check_iowait
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             check_disk_rw_/
+        check_command                   check_nrpe!check_disk_rw_/
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             rabbitmq-4443
+        check_command                   check_nrpe!rabbitmq-4443
+        }
+
+define service{
+        use                             dechao-service         
+        host_name                       KJY-10.0.8.114
+        service_description             check_rabbitmq
+        check_command                   check_nrpe!check_rabbitmq
+        }

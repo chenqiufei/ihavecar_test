@@ -1,0 +1,14 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name              hz-121.41.116.237
+        alias                  hz-121.41.116.237 
+        address                 121.41.116.237
+	notifications_enabled           1
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       hz-121.41.116.237
+        service_description             PING
+	check_command			check_ping!400.0,40%!500.0,70%
+        }

@@ -1,0 +1,5 @@
+define servicegroup{
+        servicegroup_name ES_Current_Load
+        alias             ES
+        members SD-10.0.8.38,Current_Load_es1,SD-10.0.8.39,Current_Load_es1,SD-10.0.8.40,Current_Load_es1,SD-10.0.8.41,Current_Load_es1+2,SD-10.0.8.42,Current_Load_es2,SD-10.0.8.47,Current_Load_es2,SD-10.0.8.29,Current_Load_es2
+}

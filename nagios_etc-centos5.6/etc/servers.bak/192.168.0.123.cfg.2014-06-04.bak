@@ -1,0 +1,148 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               FS-192.168.0.123
+        alias                   FS-192.168.0.123
+        address                 121.9.243.123
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Shm Partition
+        check_command                   check_nrpe!check_shm
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             zombie process
+        check_command                   check_nrpe!check_zombie_procs
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Swap Usage
+	check_command			check_nrpe!check_swap
+        }
+
+define service{
+        use                             ty-service         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             SSH
+	check_command			check_ssh2!22612
+	notifications_enabled		0
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             CPU-status
+        check_command                   check_nrpe!check_cpu
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             SYS-connections
+        check_command                   check_nrpe!check_connections
+        }
+
+define service{
+        use                             ty-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             Network-flow-eth1
+        check_command                   check_nrpe!check_network_flow
+        }
+
+#define service{
+#        use                             ty-service,srv-pnp        ; Name of service template to use
+#        host_name                       FS-192.168.0.123
+#        service_description             jobs-STATUS
+#        check_command                   check_nrpe!check_jobs
+#        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             jw88-STATUS
+        check_command                   check_nrpe!check_jw88
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             jw99-STATUS
+        check_command                   check_nrpe!check_jw99
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             fenlei-STATUS
+        check_command                   check_nrpe!check_fenlei
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             huangye-STATUS
+        check_command                   check_nrpe!check_hy
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             yhby-STATUS
+        check_command                   check_nrpe!check_yhby
+        }
+
+define service{
+        use                             ty-service,srv-pnp        ; Name of service template to use
+        host_name                       FS-192.168.0.123
+        service_description             shangpu-STATUS
+        check_command                   check_nrpe!check_sp_yhby
+        }

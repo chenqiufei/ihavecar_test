@@ -1,0 +1,24 @@
+define hostgroup{
+        hostgroup_name  KJY-servers ; The name of the hostgroup
+        alias           KJY servers ; Long name of the group
+	members	KJY-10.0.8.113,\
+		KJY-10.0.8.114,\
+		KJY-10.0.8.115,\
+		KJY-10.0.8.116,\
+		KJY-10.0.8.117,
+	}
+
+#define hostgroup{
+#        hostgroup_name  MS-cloud ; The name of the hostgroup
+#        alias           MS-cloud ; Long name of the group
+#	members MS-139.219.134.202,\
+#		MS-139.219.8.30,\
+#		MS-10.0.6.9,\
+#		MS-10.0.6.10,\
+#		MS-10.0.6.11,\
+#		MS-10.0.6.12,\
+#		MS-10.0.6.13,\
+#		MS-10.0.6.14,
+#	}
+#
+#

@@ -1,0 +1,24 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+							; This host definition will inherit all variables that are defined
+							; in (or inherited by) the linux-server host template definition.
+        host_name               host
+        alias                    host
+        address                 host
+        }
+
+# Define a service to "ping" the local machine
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       Trial_host
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+define service{
+        use                             generic-service         ; Name of service template to use
+        host_name                       59.39.7.30
+        service_description             SSH
+        check_command                   check_ssh2!22612
+        notifications_enabled           0
+        }

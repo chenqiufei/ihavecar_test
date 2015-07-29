@@ -1,0 +1,262 @@
+# Define a host for the local machine
+
+define host{
+        use                     linux-server            ; Name of host template to use
+							; This host definition will inherit all variables that are defined
+							; in (or inherited by) the linux-server host template definition.
+        host_name               121.14.37.88
+        alias                   121.14.37.88
+        address                 121.14.37.88
+        }
+
+# Define a service to "ping" the local machine
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+
+# Define a service to check the disk space of the root partition
+# on the local machine.  Warning if < 20% free, critical if
+# < 10% free space on partition.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Root Partition
+	check_command			check_nrpe!check_root
+        }
+
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Boot Partition
+        check_command                   check_nrpe!check_boot
+        }
+
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Shm Partition
+        check_command                   check_nrpe!check_shm
+        }
+
+
+# Define a service to check the number of currently logged in
+# users on the local machine.  Warning if > 20 users, critical
+# if > 50 users.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Current Users
+	check_command			check_nrpe!check_users
+        }
+
+
+# Define a service to check the number of currently running procs
+# on the local machine.  Warning if > 250 processes, critical if
+# > 400 users.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Total Processes
+	check_command			check_nrpe!check_total_procs
+        }
+
+
+
+# Define a service to check the load on the local machine. 
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Current Load
+	check_command			check_nrpe!check_load
+        }
+
+
+
+# Define a service to check the swap usage the local machine. 
+# Critical if less than 10% of swap is free, warning if less than 20% is free
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             Swap Usage
+	check_command			check_nrpe!check_swap
+        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_connect_tongji60000
+#        check_command                   check_nrpe!check_mongos_connect
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connect_tongji50000
+#        check_command                   check_nrpe!check_mongos_connect1
+#       }
+#
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connect_tongji30001
+#        check_command                   check_nrpe!check_mongos_connect2
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connect_tongji30002
+#        check_command                   check_nrpe!check_mongos_connect3
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connect_tongji30003
+#        check_command                   check_nrpe!check_mongos_connect4
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connections_tongji60000
+#        check_command                   check_nrpe!check_mongos_connections
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connections_tongji30001
+#        check_command                   check_nrpe!check_mongos_connections1
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connections_tongji30002
+#        check_command                   check_nrpe!check_mongos_connections2
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_connections_tongji30003
+#        check_command                   check_nrpe!check_mongos_connections3
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_memory_tongji60000
+#        check_command                   check_nrpe!check_mongos_memory
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_collections_tongji60000
+ #       check_command                   check_nrpe!check_mongos_collections
+ #       }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_collections_tongji30001
+#        check_command                   check_nrpe!check_mongos_collections1
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_collections_tongji30002
+#        check_command                   check_nrpe!check_mongos_collections2
+#        }
+
+#define service{
+#       use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongod_collections_tongji30003
+#        check_command                   check_nrpe!check_mongos_collections3
+#        }
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             ip_all_Connections
+	check_command			check_nrpe!check_ip_all_connections
+	}
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             ip_Connections_60000
+#	check_command			check_nrpe!check_connections_60000
+#	}
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_RepSet30001_status
+#        check_command                   check_nrpe!check_replicaset30001_status
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_RepSet30002_status
+#        check_command                   check_nrpe!check_replicaset30002_status
+#        }
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongos_RepSet30003_status
+#        check_command                   check_nrpe!check_replicaset30003_status
+#        }
+# Define a service to check SSH on the local machine.
+# Disable notifications for this service by default, as not all users may have SSH enabled.
+
+define service{
+        use                             xiaolong-service         ; Name of service template to use
+        host_name                       121.14.37.88
+        service_description             SSH
+	check_command			check_ssh2!22612
+        }
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongodb_mongs_shardingStatus
+#	check_command			check_nrpe!check_mongs_shardingStatus
+#        }
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             mongodb_config_50000
+#	check_command			check_nrpe!check_tcp1
+#        }
+
+
+
+# Define a service to check HTTP on the local machine.
+# Disable notifications for this service by default, as not all users may have HTTP enabled.
+
+#define service{
+#        use                             xiaolong-service         ; Name of service template to use
+#        host_name                       121.14.37.88
+#        service_description             HTTP
+#	check_command			check_http
+#	notifications_enabled		0
+#        }
+

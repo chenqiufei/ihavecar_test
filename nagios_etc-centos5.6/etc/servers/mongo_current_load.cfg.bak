@@ -1,0 +1,5 @@
+define servicegroup{
+        servicegroup_name Ybug_Current_Load
+        alias             Mongo_Load
+        members SD-10.0.8.18,Current Load,SD-10.0.8.20,Current Load,SD-10.0.8.22,Current Load,SD-10.0.8.27,Current Load,SD-10.0.8.28,Current Load,SD-10.0.8.43,Current Load,SD-10.0.8.44,Current Load,SD-10.0.8.45,Current Load,SD-10.0.8.21,Current Load,SD-10.0.8.37,Current Load,SD-10.0.8.2,Current Load
+}

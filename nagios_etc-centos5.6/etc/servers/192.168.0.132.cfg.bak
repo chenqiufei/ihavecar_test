@@ -1,0 +1,47 @@
+define host{
+        use                     linux-server            ; Name of host template to use
+        host_name               FS-192.168.0.132
+        alias                   FS-192.168.0.132
+        address                    121.9.243.115
+	notifications_enabled		1
+        }
+
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       FS-192.168.0.132
+        service_description             PING
+	check_command			check_ping!100.0,20%!500.0,60%
+        }
+
+
+################################# Host Monitor ###############################################
+define service{
+        use                             yuming-service         ; Name of service template to use
+        host_name                       FS-192.168.0.132
+        service_description             Root Partition
+	check_command			check_nrpe!check_root_132
+        }
+
+define service{
+        use                             yuming-service,srv-pnp         ; Name of service template to use
+        host_name                       FS-192.168.0.132
+        service_description             Current Load
+	check_command			check_nrpe!check_load_132
+        }
+
+
+
+################################ Server Monitor ###############################################
+define service{
+        use                             yuming-service
+        host_name                       FS-192.168.0.132
+        service_description             check_3c_8181
+        check_command                   check_nrpe!check_3c_8181
+        }
+
+define service{
+        use                             yuming-service
+        host_name                       FS-192.168.0.132
+        service_description             check_tuan_8182
+        check_command                   check_nrpe!check_tuan_8182
+        }
